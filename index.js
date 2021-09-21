@@ -20,14 +20,14 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 require("dotenv").config();
-const { PORT_API } = process.env;
-const port = PORT_API || 3001;
+const { PORT } = process.env;
+const port = PORT || 3001;
 
 // Syncing all the models at once.
 conn.sync({ alter: true }).then(() => {// de force a alter
   server.listen(port, async () => {
     try {
-      console.log(`%s listening at ${PORT_API}`); // eslint-disable-line no-console  
+      console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console  
     } catch (error) {
       console.error('Hubo un error al iniciar el servidor')
     }
