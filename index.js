@@ -25,7 +25,12 @@ const port = PORT_API || 3001;
 
 // Syncing all the models at once.
 conn.sync({ alter: true }).then(() => {// de force a alter
-  server.listen(port, () => {
-    console.log(`%s listening at ${PORT_API}`); // eslint-disable-line no-console
+  server.listen(port, async () => {
+    try {
+      console.log(`%s listening at ${PORT_API}`); // eslint-disable-line no-console  
+    } catch (error) {
+      console.error('Hubo un error al iniciar el servidor')
+    }
+    
   });
 });
